@@ -3,12 +3,7 @@ import { getFirestore, query, collection, onSnapshot, orderBy, addDoc, Timestamp
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBbDU32lktkVABGzKt6bsOJ2znXSfmbses",
-    authDomain: "fir-chat-2c444.firebaseapp.com",
-    projectId: "fir-chat-2c444",
-    storageBucket: "fir-chat-2c444.appspot.com",
-    messagingSenderId: "689081908114",
-    appId: "1:689081908114:web:9c6fdef587223f8abd9f4b"
+
 }
 
 const firebaseApp = initializeApp(firebaseConfig)
