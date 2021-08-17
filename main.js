@@ -1,27 +1,31 @@
-import { initializeApp } from 'firebase/app';
-import { getFirestore, query, collection, onSnapshot, orderBy, addDoc, Timestamp } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { initializeApp } from 'firebase/app'
+import { getFirestore, query, collection, onSnapshot, orderBy, addDoc, Timestamp } from 'firebase/firestore'
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 
 const firebaseConfig = {
-
+    apiKey: "AIzaSyBbDU32lktkVABGzKt6bsOJ2znXSfmbses",
+    authDomain: "fir-chat-2c444.firebaseapp.com",
+    projectId: "fir-chat-2c444",
+    storageBucket: "fir-chat-2c444.appspot.com",
+    messagingSenderId: "689081908114",
+    appId: "1:689081908114:web:9c6fdef587223f8abd9f4b"
 }
 
-const firebaseApp = initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig)
 
 // Auth
 // ==========================
-const auth = getAuth();
+const auth = getAuth()
 let userName
 
+// Auth observer
 onAuthStateChanged(auth, (user) => {
     const modal = document.querySelector('#modal')
 
-    if (user) {
-        // User is signed in
+    if (user) { // User is signed in
         userName = user.email
         modal.classList.add('invisible')
-    } else {
-        // logged out
+    } else { // User is logged out
         modal.classList.remove('invisible')
     }
 })
@@ -58,10 +62,9 @@ const login = async e => {
 
 document.querySelector('#login').addEventListener('submit', login)
 
-
 // Database
 // ==========================
-const db = getFirestore();
+const db = getFirestore()
 
 // Subscribe to messages
 const q = query(collection(db, "messages"), orderBy("timestamp"))
@@ -71,14 +74,9 @@ const unsubscribe = onSnapshot(q, (snapshot) => {
         const data = change.doc.data()
         const date = new Date(data.timestamp.toDate()).toLocaleTimeString()
 
-
         const li = document.createElement('li')
 
-        // li.innerHTML = `<p><span class="text-gray-600 text-sm font-normal">${date}</span> ${data.msg}</p>`
-
-        // with username
         li.innerHTML = `<p><span class="text-gray-700 text-sm font-normal">${date}</span> <span class="text-gray-100 font-bold">${data.user}:</span> ${data.msg}</p>`
-
 
         document.querySelector('#messages').appendChild(li)
     })
