@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat</title>
+</head>
+
+<body>
+  <main class="px-5 pb-16 bg-gradient-to-r from-indigo-300 to-purple-400 h-screen overflow-auto text-lg">
+    <ul id="messages" class="text-gray-800 font-bold"></ul>
+  </main>
+
+  <footer class="absolute bottom-0 w-full p-2">
+    <form id="new-message" class="flex justify-between gap-2">
+      <input class="rounded-lg w-full p-3 bg-gray-900 text-white shadow-lg placeholder-white font-bold" id="input"
+        type="text" placeholder="New message ..." required>
+      <button class="px-4 rounded-xl font-bold bg-pink-700 text-white shadow-lg" type="submit">Send</button>
+    </form>
+  </footer>
+
+  <!-- Modal -->
+  <div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true"
+    id="modal">
+    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div class="fixed inset-0 bg-gray-600 bg-opacity-75" aria-hidden="true"></div>
+
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+      <div class="inline-block bg-white rounded-lg text-left overflow-hidden shadow-xl transform align-middle">
+        <div class="bg-white p-8">
+          <h1 class="text-4xl font-extrabold pb-6 text-indigo-900">Chat</h1>
+
+          <div class="mt-2 flex gap-12">
+            <form id="login" class="flex flex-col gap-3">
+              <h1 class="font-bold mb-4 text-xl text-gray-700">Login</h1>
+
+              <input class="p-2 bg-gray-200  rounded-lg" type="text" placeholder="Email">
+              <input class="p-2 bg-gray-200  rounded-lg" type="password" placeholder="Password">
+
+              <button class="self-end p-2 w-full bg-pink-700 rounded-lg text-white font-bold"
+                type="submit">Login</button>
+            </form>
+
+            <form id="register" class="flex flex-col gap-3">
+              <h1 class="font-bold mb-4 text-xl text-gray-700">Register</h1>
+
+              <input class="p-2 bg-gray-200  rounded-lg" type="text" placeholder="Email">
+              <input class="p-2 bg-gray-200  rounded-lg" type="password" placeholder="Password">
+
+              <button class="self-end w-full p-2 bg-pink-700 rounded-lg text-white font-bold"
+                type="submit">Register</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
